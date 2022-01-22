@@ -1,0 +1,19 @@
+<div class="search-bar-label">
+  <h2>Search critieria</h2>
+  <p>Select country and devices</p>
+</div>
+
+<div class="container">
+  <mat-form-field appearance="fill" class="select">
+    <mat-label>Countries</mat-label>
+    <mat-select multiple>
+      <mat-option *ngFor="let country of countries" [value]="country">{{country}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="select">
+    <mat-label>Devices</mat-label>
+    <mat-select multiple>
+      <mat-option *ngFor="let device of devices" [value]="device">{{device}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

@@ -74,25 +74,13 @@
                             <outputDirectory>${project.build.directory}/classes/resources/</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${project.parent.basedir}/frontend/dist/myapp/</directory>
+                                    <directory>${project.parent.basedir}/frontend/dist/META-INF/resources</directory>
                                 </resource>
                             </resources>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.tomcat.maven</groupId>-->
-<!--                <artifactId>tomcat7-maven-plugin</artifactId>-->
-<!--                <version>2.2</version>-->
-<!--                <configuration>-->
-<!--                    &lt;!&ndash; http port &ndash;&gt;-->
-<!--                    <port>9090</port>-->
-<!--                    &lt;!&ndash; application path always starts with /&ndash;&gt;-->
-<!--                    <path>/</path>-->
-<!--                    <contextReloadable>true</contextReloadable>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
         </plugins>
     </build>
 </project>
