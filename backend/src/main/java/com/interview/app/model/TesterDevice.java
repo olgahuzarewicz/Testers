@@ -7,28 +7,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-import java.util.Set;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Tester {
+public class TesterDevice {
 
     @CsvBindByName(column = "testerId")
-    int id;
+    int testerId;
 
-    @CsvBindByName(column = "firstName")
-    String firstName;
-
-    @CsvBindByName(column = "lastName")
-    String lastName;
-
-    @CsvBindByName(column = "country")
-    String country;
-
-    @CsvBindByName(column = "lastLogin")
-    String lastLogin;
-
-    Set<Integer> deviceIds;
+    @CsvBindByName(column = "deviceId")
+    int deviceId;
 }

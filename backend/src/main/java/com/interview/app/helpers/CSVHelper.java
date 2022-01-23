@@ -1,7 +1,6 @@
 package com.interview.app.helpers;
 
 import com.opencsv.bean.CsvToBeanBuilder;
-import com.opencsv.bean.CsvToBeanFilter;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -10,7 +9,11 @@ import java.util.List;
 
 public class CSVHelper {
 
-    public static <T> List getFromFileCSV(InputStream inputStream, Class clazz) {
+    private CSVHelper() {
+        throw new IllegalStateException("Utility class");
+    }
+
+    public static List getFromFileCSV(InputStream inputStream, Class clazz) {
         return new CsvToBeanBuilder(new BufferedReader(new InputStreamReader(inputStream)))
                 .withType(clazz)
                 .withFilter(strings -> {
