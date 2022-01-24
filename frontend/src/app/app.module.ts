@@ -6,11 +6,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+ 
 
 import { ResultTableComponent } from './result-table/result-table.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchBarService } from './search-bar/search-bar.service';
 import { ResultTableService } from './result-table/result-table.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,8 +25,11 @@ import { ResultTableService } from './result-table/result-table.service';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatSelectModule,
-    MatTableModule
+    MatCheckboxModule,
+    MatTableModule,
+    FormsModule
   ],
   providers: [SearchBarService, ResultTableService],
   bootstrap: [AppComponent]

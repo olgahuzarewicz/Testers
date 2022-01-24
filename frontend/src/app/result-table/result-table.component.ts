@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ResultTableService } from './result-table.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Tester } from '../models/tester.model';
+import { ResultTableService } from './result-table.service';
 
 @Component({
   selector: 'app-result-table',
@@ -8,20 +9,27 @@ import { Tester } from '../models/tester.model';
   styleUrls: ['./result-table.component.css']
 })
 export class ResultTableComponent implements OnInit {
-  
-  displayedColumns: string[] = ['id', 'name', 'surname', 'experience'];
-  //testers: Tester[] = [];
 
-  testers: Tester[] = [{id: 1, name: 'A', surname: 'a', experience: 2}, 
-  {id: 2, name: 'B', surname: 'b', experience: 3}, 
-  {id: 3, name: 'C', surname: 'c', experience: 5}];
+  @Input()
+  countries: string[] = [];
+
+  @Input()
+  devices: string[] = [];
+
+  displayedColumns: string[] = ['id', 'name', 'surname', 'experience'];
+  testers: Observable<Tester[]> = of();
 
   constructor(private service: ResultTableService) { }
 
   ngOnInit(): void {
+    this.testers = this.getTesters();
   }
 
-  getTesters(countries: string[], devices: string[]): Tester[]{
+  ngOnChanges() {
+    this.testers = this.service.getTestersBy(this.countries, this.devices);
+  }
+
+  getTesters(): Observable<Tester[]> {
     return this.service.getTesters();
   }
 

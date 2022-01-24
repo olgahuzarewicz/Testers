@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  selectedCountries: string[] = [];
+  selectedDevices: string[] = [];
 
+  countrySelected(country: string[]){
+    this.selectedCountries = country;
+  }
+
+  deviceSelected(device: string[]){
+    this.selectedDevices = device;
+  }
 }

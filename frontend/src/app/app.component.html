@@ -2,7 +2,12 @@
   <span>Testers Matching</span>
 </div>
 
-<div class="content" role="main">
-  <app-search-bar></app-search-bar>
+<div role="main">
+  <div class="search-bar">
+    <app-search-bar (emitSelectedCountries)="countrySelected($event)" (emitSelectedDevices)="deviceSelected($event)">
+    </app-search-bar>
+  </div>
+  <div class="table">
+    <app-result-table [countries]="selectedCountries" [devices]="selectedDevices"></app-result-table>
+  </div>
 </div>
-<app-result-table></app-result-table>

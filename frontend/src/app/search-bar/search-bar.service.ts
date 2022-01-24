@@ -1,20 +1,21 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { Device } from '../models/device.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchBarService {
 
-  countries: string[] = ['Germany', 'Poland', 'USA'];
-  devices: string[] = ['iPhone 4', 'iPhone 6', 'Samsung', 'OnePlus 3'];
+  constructor(private httpClient: HttpClient) { }
 
-  constructor() { }
-
-  getCountries(): string[]{
-    return this.countries;
+  getCountries(): Observable<string[]>{
+    return this.httpClient.get<string[]>(environment.REST_API_SERVER + '/countries')
   }
 
-  getDevices(): string[]{
-    return this.devices;
+  getDevices(): Observable<Device[]>{
+    return this.httpClient.get<Device[]>(environment.REST_API_SERVER + '/devices')
   }
 }

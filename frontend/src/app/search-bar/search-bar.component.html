@@ -4,16 +4,31 @@
 </div>
 
 <div class="container">
-  <mat-form-field appearance="fill" class="select">
-    <mat-label>Countries</mat-label>
-    <mat-select multiple>
-      <mat-option *ngFor="let country of countries" [value]="country">{{country}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="fill" class="select">
-    <mat-label>Devices</mat-label>
-    <mat-select multiple>
-      <mat-option *ngFor="let device of devices" [value]="device">{{device}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
+  <div class="column">
+    <mat-checkbox (change)="toggleAllCountriesSelection()" [(ngModel)]="allCountriesSelected"
+                  [ngModelOptions]="{standalone: true}"
+                  class="select">Select All
+    </mat-checkbox>
+    <mat-form-field appearance="fill" class="select">
+      <mat-label>Countries</mat-label>
+      <mat-select #countriesSelect [(ngModel)]="selectedCountries" multiple>
+        <mat-option (click)="countryClick()" *ngFor="let country of countries$ | async" [value]="country">{{country}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="column">
+    <mat-checkbox (change)="toggleAllDevicesSelection()" [(ngModel)]="allDevicesSelected"
+                  [ngModelOptions]="{standalone: true}"
+                  class="select">Select All
+    </mat-checkbox>
+    <mat-form-field appearance="fill" class="select">
+      <mat-label>Devices</mat-label>
+      <mat-select #devicesSelect [(ngModel)]="selectedDevices" multiple>
+        <mat-option (click)="deviceClick()" *ngFor="let device of devices$ | async" [value]="device.id">
+          {{device.description}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>

@@ -7,12 +7,12 @@
 
   <ng-container matColumnDef="name">
     <th *matHeaderCellDef mat-header-cell> Name</th>
-    <td *matCellDef="let element" mat-cell> {{element.name}}</td>
+    <td *matCellDef="let element" mat-cell> {{element.firstName}}</td>
   </ng-container>
 
   <ng-container matColumnDef="surname">
     <th *matHeaderCellDef mat-header-cell> Surname</th>
-    <td *matCellDef="let element" mat-cell> {{element.surname}}</td>
+    <td *matCellDef="let element" mat-cell> {{element.lastName}}</td>
   </ng-container>
 
   <ng-container matColumnDef="experience">
@@ -23,4 +23,3 @@
   <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
   <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
 </table>
-
